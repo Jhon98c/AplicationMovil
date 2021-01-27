@@ -13,6 +13,7 @@ class pageBuscar extends StatelessWidget {
         children: <Widget>[
           Text1(),
           Buscar(),
+          SizedBox(height: 15.0),
           catBuscar(),
         ],
       ),
@@ -74,5 +75,11 @@ Widget Text2() {
   return Text(
     'Buscar por categoria',
     style: TextStyle(fontSize: 20.0),
+  );
+}
+
+Widget btnsPrimeros() {
+  return Column(
+    children: <Widget>[],
   );
 }

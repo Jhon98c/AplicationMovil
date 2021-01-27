@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Paginas/pageFormulario.dart';
 
 class pagePublicar extends StatelessWidget {
   var child;
@@ -42,7 +43,8 @@ class btn1 extends StatelessWidget {
       child: InkWell(
         splashColor: Colors.white,
         onTap: () {
-          print('Sitio web y TI.');
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => pageForm()));
         },
         child: Container(
           width: MediaQuery.of(context).size.width,

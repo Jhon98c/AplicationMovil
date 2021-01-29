@@ -6,12 +6,20 @@ class pageBuscar extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text('Buscar'),
-        elevation: 40.0,
+        title: Center(
+          child: Text('Buscar', textAlign: TextAlign.center),
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(10.0),
+            bottomRight: Radius.circular(10.0),
+          ),
+        ),
       ),
       body: new Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Text1(),
+          SizedBox(height: 15.0),
           Buscar(),
           SizedBox(height: 15.0),
           catBuscar(),
@@ -21,40 +29,29 @@ class pageBuscar extends StatelessWidget {
   }
 }
 
-Widget Text1() {
-  return Text(
-    'Buscar',
-    style: TextStyle(fontSize: 28.0),
-  );
-}
-
 Widget Buscar() {
-  return Container(
-    width: 400,
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        const SizedBox(
-          height: 15,
-        ),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(15.0),
-          child: TextField(
-            decoration: InputDecoration(
-                focusedBorder: InputBorder.none,
-                border: InputBorder.none,
-                filled: true,
-                hintText: 'Buscar empleo',
-                fillColor: Colors.grey[200],
-                prefixIcon: Icon(
-                  Icons.search,
-                  color: Colors.grey,
-                )),
+  return Align(
+      alignment: Alignment.topCenter,
+      child: Container(
+        width: 400,
+        child: Align(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(15.0),
+            child: TextField(
+              decoration: InputDecoration(
+                  focusedBorder: InputBorder.none,
+                  border: InputBorder.none,
+                  filled: true,
+                  hintText: 'Buscar empleo',
+                  fillColor: Colors.grey[200],
+                  prefixIcon: Icon(
+                    Icons.search,
+                    color: Colors.grey,
+                  )),
+            ),
           ),
         ),
-      ],
-    ),
-  );
+      ));
 }
 
 class catBuscar extends StatelessWidget {

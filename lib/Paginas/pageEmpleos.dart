@@ -6,26 +6,27 @@ class pageEmpleos extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Empleos'),
-          elevation: 40.0,
+      appBar: AppBar(
+        title: Center(
+          child: Text('Empleos', textAlign: TextAlign.center),
         ),
-        body: new Column(
-          children: <Widget>[
-            Text1(),
-            BtnSuperiores(),
-            SizedBox(height: 300.0),
-            btnBuscar()
-          ],
-        ));
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(10.0),
+            bottomRight: Radius.circular(10.0),
+          ),
+        ),
+      ),
+      body: Column(
+        children: <Widget>[
+          SizedBox(height: 20.0),
+          BtnSuperiores(),
+          SizedBox(height: 300.0),
+          btnBuscar()
+        ],
+      ),
+    );
   }
-}
-
-Widget Text1() {
-  return Text(
-    'Empleos',
-    style: TextStyle(fontSize: 28.0),
-  );
 }
 
 Widget BtnSuperiores() {
@@ -61,22 +62,6 @@ Widget BtnSuperiores() {
         onPressed: () {/* ... */},
       ),
     ],
-  );
-}
-
-Widget btnBuscar2() {
-  return Container(
-    child: RaisedButton(
-      color: Colors.red,
-      textColor: Colors.white,
-      child: Text(
-        "Buscar trabajos",
-        style: TextStyle(
-          fontSize: 15.0,
-        ),
-      ),
-      onPressed: () {},
-    ),
   );
 }
 

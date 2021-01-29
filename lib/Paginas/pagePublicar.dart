@@ -9,11 +9,19 @@ class pagePublicar extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
         appBar: AppBar(
-          title: Text('Pubicar'),
-          elevation: 40.0,
+          title: Center(
+            child: Text('Publicar', textAlign: TextAlign.center),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(10.0),
+              bottomRight: Radius.circular(10.0),
+            ),
+          ),
         ),
         body: ListView(
           children: <Widget>[
+            SizedBox(height: 10.0),
             Text1(),
             btn1(),
             btn2(),

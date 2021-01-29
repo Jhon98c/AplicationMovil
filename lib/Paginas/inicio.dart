@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_app/Paginas/AppBarInferior.dart';
+import 'package:flutter_app/Complementos/AppBarInferior.dart';
 
 class InicioPage extends StatelessWidget {
   @override
@@ -156,7 +156,7 @@ class BotonStar extends StatelessWidget {
                   child: Text("Empezar"),
                   splashColor: Colors.green,
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) => AppBarInferior()));
                   })
             ]),

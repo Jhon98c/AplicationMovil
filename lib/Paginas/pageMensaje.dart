@@ -6,8 +6,15 @@ class pageMensaje extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text('Perfil'),
-        elevation: 40.0,
+        title: Center(
+          child: Text('Mensaje', textAlign: TextAlign.center),
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(10.0),
+            bottomRight: Radius.circular(10.0),
+          ),
+        ),
       ),
       body: new Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

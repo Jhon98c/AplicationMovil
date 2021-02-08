@@ -33,6 +33,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   bubble_bottom_bar: ^1.2.0
+  flappy_search_bar: ^1.7.2
 
 
 flutter:

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Complementos/AppBarInferior.dart';
 import 'package:flutter_app/Paginas/inicio.dart';
-import 'package:flutter_app/Paginas/pageEmpleos.dart';
-import 'package:flutter_app/Paginas/pageView.dart';
+import 'package:flutter_app/Paginas_complementarias/pageViewForm.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,7 +16,7 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       routes: {
         "/": (BuildContext context) => InicioPage(),
-        "/pageView": (BuildContext context) => pageView(),
+        "/pageView": (BuildContext context) => pageViewFormu(),
       },
     );
   }

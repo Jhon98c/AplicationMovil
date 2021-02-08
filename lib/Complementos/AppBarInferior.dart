@@ -6,13 +6,15 @@ import 'package:flutter_app/Paginas/pagePerfil.dart';
 import 'package:flutter_app/Paginas/pagePublicar.dart';
 
 class AppBarInferior extends StatefulWidget {
+  AppBarInferior({Key key, this.currIndex /*, this.flag*/}) : super(key: key);
+  final int currIndex;
+  bool flag;
   @override
-  State<StatefulWidget> createState() => _BottomAppBar();
+  State createState() => _BottomAppBar();
 }
 
 class _BottomAppBar extends State<AppBarInferior> {
-  int _currentIndex = 0;
-  final List<Widget> _children = [
+  final List screens = [
     pageEmpleos(),
     pagePublicar(),
     pageBuscar(),
@@ -20,21 +22,36 @@ class _BottomAppBar extends State<AppBarInferior> {
     pagePerfil(),
   ];
 
+  int currentIndex = 0;
+
+  bool flags;
+
+  void defineflag(bool flag1) {
+    flags = flag1;
+  }
+
   void onTabTapped(int index) {
     setState(() {
-      _currentIndex = index;
+      currentIndex = index;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    /*(widget.flag)
+        ? setState(() {
+            currentIndex = widget.currIndex;
+            widget.flag = false;
+          })
+        : null;*/
     return Scaffold(
-      body: _children[_currentIndex],
+      body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        currentIndex: _currentIndex,
-        onTap: onTabTapped,
+        currentIndex: currentIndex,
+        onTap: (index) => setState(() {
+          currentIndex = index;
+        }),
         elevation: 100.0,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(

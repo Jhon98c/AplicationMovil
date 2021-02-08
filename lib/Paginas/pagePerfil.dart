@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 
 class pagePerfil extends StatefulWidget {
   @override
@@ -214,9 +214,9 @@ class _perfilStatePage extends State<pagePerfil> with TickerProviderStateMixin {
       return _foregroundOff;
     }
   }*/
-}
+}*/
 
-/*import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 class pagePerfil extends StatelessWidget {
   @override
@@ -244,4 +244,3 @@ Widget Text1() {
     style: TextStyle(fontSize: 22.0),
   );
 }
-*/

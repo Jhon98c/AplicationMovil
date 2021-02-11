@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Paginas_complementarias/pageViewResulBusqueda.dart';
+import 'package:flutter_app/Paginas_complementarias/complementPageBuscar/pageViewResulBusqueda.dart';
 
 class pageResultadoBus extends StatefulWidget {
   String btnText;
@@ -16,6 +16,7 @@ class _pageResultadoBusState extends State<pageResultadoBus> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue[900],
         title: Center(
           child: SizedBox(
             child: Text(
@@ -65,23 +66,23 @@ class cajaResultados extends StatelessWidget {
           ),
           btnResultados(
             text: 'Web site development (premium subscription store)',
-            text1: 'Web site development (premium subscription store)',
+            text1: 'Web site development ',
           ),
           btnResultados(
             text: 'Web site development (premium subscription store)',
-            text1: 'Web site development (premium subscription store)',
+            text1: 'Web site development ',
           ),
           btnResultados(
             text: 'Web site development (premium subscription store)',
-            text1: 'Web site development (premium subscription store)',
+            text1: 'Web site development ',
           ),
           btnResultados(
             text: 'Web site development (premium subscription store)',
-            text1: 'Web site development (premium subscription store)',
+            text1: 'Web site development ',
           ),
           btnResultados(
             text: 'Web site development (premium subscription store)',
-            text1: 'Web site development (premium subscription store)',
+            text1: 'Web site development ',
           ),
         ],
       ),
@@ -116,7 +117,7 @@ class btnResultados extends StatelessWidget {
             border: Border(
               bottom: BorderSide(
                 color: Colors.grey[400],
-                width: 2,
+                width: 1,
               ),
             ),
           ),

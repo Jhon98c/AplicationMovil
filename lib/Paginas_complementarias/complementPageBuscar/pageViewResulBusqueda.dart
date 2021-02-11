@@ -16,6 +16,7 @@ class _pageViewResulBusquedaState extends State<pageViewResulBusqueda> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue[900],
         title: Center(
           child: SizedBox(
             child: Text(

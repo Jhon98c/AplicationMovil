@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Complementos/Routes.dart';
-import 'package:flutter_app/Paginas_complementarias/pageViewForm.dart';
+import 'package:flutter_app/Paginas_complementarias/complementPagePublicar/pageViewForm.dart';
 
 class pageFormulario extends StatefulWidget {
   @override
@@ -21,6 +21,7 @@ class _pageFormState extends State<pageFormulario> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue[900],
         title: Center(
           child:
               Text('Publicar un proyecto/empleo', textAlign: TextAlign.center),

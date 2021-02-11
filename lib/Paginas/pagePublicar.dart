@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Paginas_complementarias/pageFormulario.dart';
+import 'package:flutter_app/Paginas_complementarias/complementPagePublicar/pageFormulario.dart';
 
 class pagePublicar extends StatefulWidget {
   @override
@@ -14,6 +14,7 @@ class _pagePublicarState extends State<pagePublicar> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue[900],
         title: Center(
           child: Text('Publicar', textAlign: TextAlign.center),
         ),

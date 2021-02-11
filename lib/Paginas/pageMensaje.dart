@@ -1,126 +1,13 @@
-/*import 'dart:math';
-
-import 'package:flappy_search_bar/flappy_search_bar.dart';
-import 'package:flappy_search_bar/scaled_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Paginas_complementarias/complementPageMensaje/message_model.dart';
+import 'package:flutter_app/Paginas_complementarias/complementPageMensaje/chat_screen.dart';
 
 class pageMensaje extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: buscador(),
-    );
-  }
-}
-
-class Post {
-  final String title;
-  final String body;
-
-  Post(this.title, this.body);
-}
-
-class buscador extends StatefulWidget {
-  @override
-  _buscadorState createState() => _buscadorState();
-}
-
-class _buscadorState extends State<buscador> {
-  final SearchBarController<Post> _searchBarController = SearchBarController();
-  bool isReplay = false;
-
-  Future<List<Post>> _getALlPosts(String text) async {
-    await Future.delayed(Duration(seconds: text.length == 4 ? 10 : 1));
-    if (isReplay) return [Post("Replaying !", "Replaying body")];
-    if (text.length == 5) throw Error();
-    if (text.length == 6) return [];
-    List<Post> posts = [];
-
-    var random = new Random();
-    for (int i = 0; i < 10; i++) {
-      posts
-          .add(Post("$text $i", "body random number : ${random.nextInt(100)}"));
-    }
-    return posts;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.red,
-      body: Container(
-        height: 500,
-        width: 500,
-        child: SearchBar<Post>(
-          searchBarPadding: EdgeInsets.symmetric(horizontal: 10),
-          headerPadding: EdgeInsets.symmetric(horizontal: 10),
-          listPadding: EdgeInsets.symmetric(horizontal: 10),
-          onSearch: _getALlPosts,
-          searchBarController: _searchBarController,
-          //placeHolder: Text("placeholder"),
-          cancellationWidget: Text("Cancel"),
-          emptyWidget: Text("empty"),
-          indexedScaledTileBuilder: (int index) =>
-              ScaledTile.count(1, index.isEven ? 2 : 1),
-          onCancelled: () {
-            print("Cancelled triggered");
-          },
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
-          crossAxisCount: 2,
-          onItemFound: (Post post, int index) {
-            return Container(
-              color: Colors.lightBlue,
-              child: ListTile(
-                title: Text(post.title),
-                isThreeLine: true,
-                subtitle: Text(post.body),
-                onTap: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => Detail()));
-                },
-              ),
-            );
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class Detail extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-            Text("los resultados de su busqueda"),
-          ],
-        ),
-      ),
-    );
-  }
-}*/
-
-import 'package:flutter/material.dart';
-
-class pageMensaje extends StatefulWidget {
-  @override
-  _pageMensajeState createState() => _pageMensajeState();
-}
-
-class _pageMensajeState extends State<pageMensaje> {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue[900],
         title: Center(
           child: Text('Mensaje', textAlign: TextAlign.center),
         ),
@@ -131,42 +18,127 @@ class _pageMensajeState extends State<pageMensaje> {
           ),
         ),
       ),
-      body: new Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Text1(),
-          mensaje(),
-        ],
+      body: ListView.builder(
+        itemCount: chats.length,
+        itemBuilder: (BuildContext context, int index) {
+          final Message chat = chats[index];
+          return GestureDetector(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => ChatScreen(
+                  user: chat.sender,
+                ),
+              ),
+            ),
+            child: Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 15,
+              ),
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.all(2),
+                    decoration: chat.unread
+                        ? BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(40)),
+                            border: Border.all(
+                              width: 2,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            // shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                              ),
+                            ],
+                          )
+                        : BoxDecoration(
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                              ),
+                            ],
+                          ),
+                    child: CircleAvatar(
+                      radius: 35,
+                      backgroundImage: AssetImage(chat.sender.imageUrl),
+                    ),
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.65,
+                    padding: EdgeInsets.only(
+                      left: 20,
+                    ),
+                    child: Column(
+                      children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Text(
+                                  chat.sender.name,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                chat.sender.isOnline
+                                    ? Container(
+                                        margin: const EdgeInsets.only(left: 5),
+                                        width: 7,
+                                        height: 7,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                      )
+                                    : Container(
+                                        child: null,
+                                      ),
+                              ],
+                            ),
+                            Text(
+                              chat.time,
+                              style: TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.w300,
+                                color: Colors.black54,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            chat.text,
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Colors.black54,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }
-}
-
-Widget Text1() {
-  return Text(
-    'Mensajes',
-    style: TextStyle(fontSize: 22.0),
-  );
-}
-
-Widget mensaje() {
-  return Center(
-    child: Container(
-      height: 300,
-      width: 300,
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.blue,
-          width: 4,
-        ),
-      ),
-      child: Center(
-        child: Text(
-          'No tiene Mensajes',
-          style: TextStyle(fontSize: 30.0),
-        ),
-      ),
-    ),
-  );
 }

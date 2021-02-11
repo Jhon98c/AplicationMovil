@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Paginas_complementarias/pageResultadoBusqueda.dart';
+import 'package:flutter_app/Paginas_complementarias/complementPageBuscar/data.dart';
+import 'package:flutter_app/Paginas_complementarias/complementPageBuscar/pageResultadoBusqueda.dart';
 import 'package:flutter_svg/svg.dart';
 
 class pageBuscar extends StatefulWidget {
@@ -13,9 +14,17 @@ class _pageBuscarState extends State<pageBuscar> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue[900],
         title: Center(
           child: Text('Buscar', textAlign: TextAlign.center),
         ),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                showSearch(context: context, delegate: DataSearch());
+              })
+        ],
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(10.0),
@@ -31,17 +40,9 @@ class _pageBuscarState extends State<pageBuscar> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Container(
-                child: Column(
-                  children: <Widget>[
-                    SizedBox(height: 15.0),
-                    Buscar(),
-                  ],
-                ),
-              ),
               SizedBox(height: 15.0),
               Text(
-                'Buscar por categoria',
+                'Busqueda por categoria',
                 style: TextStyle(fontSize: 20.0),
               ),
               SizedBox(height: 15.0),
@@ -187,29 +188,4 @@ class presionar extends StatelessWidget {
       ),
     );
   }
-}
-
-Widget Buscar() {
-  return Align(
-      alignment: Alignment.topCenter,
-      child: Container(
-        width: 400,
-        child: Align(
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(15.0),
-            child: TextField(
-              decoration: InputDecoration(
-                  focusedBorder: InputBorder.none,
-                  border: InputBorder.none,
-                  filled: true,
-                  hintText: 'Buscar empleo',
-                  fillColor: Colors.white,
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: Colors.grey[300],
-                  )),
-            ),
-          ),
-        ),
-      ));
 }
